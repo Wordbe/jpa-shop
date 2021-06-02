@@ -1,5 +1,6 @@
 package co.wordbe.jpashop.service;
 
+import co.wordbe.jpashop.domain.item.Book;
 import co.wordbe.jpashop.domain.item.Item;
 import co.wordbe.jpashop.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,5 +27,13 @@ public class ItemService {
 
     public List<Item> findItems() {
         return itemRepository.findAll();
+    }
+
+    @Transactional
+    public void updateItem(Long itemId, Book bookParam) {
+        Item item = itemRepository.findOne(itemId);
+        item.setPrice(bookParam.getPrice());
+        item.setName(bookParam.getName());
+        item.setStockQuantity(bookParam.getStockQuantity());
     }
 }
