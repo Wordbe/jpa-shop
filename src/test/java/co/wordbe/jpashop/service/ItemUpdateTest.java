@@ -15,10 +15,10 @@ public class ItemUpdateTest {
 
     @Test
     public void updateTest() throws Exception {
-        Book book = em.find(Book.class, 1L);
+//        Book book = em.find(Book.class, 1L);
 
         // TX
-        book.setName("바뀐 이름");
+//        book.setName("바뀐 이름");
 
         // 변경감지 (dirty checking)
         // TX commit
