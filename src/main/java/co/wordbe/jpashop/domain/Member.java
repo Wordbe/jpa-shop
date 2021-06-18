@@ -3,11 +3,13 @@ package co.wordbe.jpashop.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@BatchSize(size = 100)
 @Getter @Setter
 @Entity
 public class Member {
