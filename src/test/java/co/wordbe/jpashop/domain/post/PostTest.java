@@ -93,4 +93,14 @@ class PostTest {
         assertThat(foundComment1.getPostId()).isEqualTo(savedPost.getId());
         assertThat(foundComment2.getPostId()).isEqualTo(savedPost.getId());
     }
+
+    @Test
+    void 일대다단방향은_UPDATE_SQL이_실행된다() {
+        Comment comment1 = new Comment("맛있어요.");
+        Comment comment2 = new Comment("뜨거워요.");
+
+        Post post = new Post("백종원의 김치찌개", "1:3의 비율로");
+        post.changeComment(comment1);
+        post.changeComment(comment2);
+    }
 }
