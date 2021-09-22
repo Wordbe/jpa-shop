@@ -103,4 +103,11 @@ class PostTest {
         post.changeComment(comment1);
         post.changeComment(comment2);
     }
+
+    @Test
+    void saved객체_변경감지_테스트() {
+        Post post = new Post("백종원의 김치찌개", "1:3의 비율로");
+        Post savedPost = postRepository.save(post); //insert
+        savedPost.setTitle("제목 변경"); //update
+    }
 }
