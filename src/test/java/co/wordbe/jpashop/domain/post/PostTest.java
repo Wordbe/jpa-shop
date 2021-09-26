@@ -9,6 +9,9 @@ import org.springframework.test.annotation.Rollback;
 
 import javax.persistence.EntityManager;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
@@ -78,8 +81,8 @@ class PostTest {
         Comment comment2 = new Comment("뜨거워요.");
 
         Post post = new Post("백종원의 김치찌개", "1:3의 비율로");
-        post.changeComment(comment1);
-        post.changeComment(comment2);
+        post.addComment(comment1);
+        post.addComment(comment2);
 
         Post savedPost = postRepository.save(post);
         Comment savedComment1 = commentRepository.save(comment1);
@@ -100,8 +103,8 @@ class PostTest {
         Comment comment2 = new Comment("뜨거워요.");
 
         Post post = new Post("백종원의 김치찌개", "1:3의 비율로");
-        post.changeComment(comment1);
-        post.changeComment(comment2);
+        post.addComment(comment1);
+        post.addComment(comment2);
     }
 
     @Test
@@ -109,5 +112,36 @@ class PostTest {
         Post post = new Post("백종원의 김치찌개", "1:3의 비율로");
         Post savedPost = postRepository.save(post); //insert
         savedPost.setTitle("제목 변경"); //update
+    }
+
+    @Test
+    void updateCollection() {
+        Comment comment1 = new Comment("맛있어요.");
+        Comment comment2 = new Comment("뜨거워요.");
+
+        Post post = new Post("백종원의 김치찌개", "1:3의 비율로");
+        post.addComment(comment1);
+        post.addComment(comment2);
+
+        Post savedPost = postRepository.save(post);
+        System.out.println("savedPost = " + savedPost);
+        em.flush(); em.clear();
+        System.out.println("================================================================================");
+
+        Post post1 = postRepository.findWithCommentsById(savedPost.getId()).get();
+        System.out.println("post1 = " + post1);
+//
+
+        Comment comment3 = new Comment("댓글 3");
+        Comment comment4 = new Comment("댓글 4");
+        Comment comment5 = new Comment("댓글 5");
+        List<Comment> comments = Arrays.asList(comment3, comment4, comment5);
+        post1.updateComments(comments);
+        System.out.println("post1 = " + post1);
+        em.flush(); em.clear();
+        System.out.println("================================================================================");
+
+        Post post2 = postRepository.findWithCommentsById(savedPost.getId()).get();
+        System.out.println("post2 = " + post2);
     }
 }

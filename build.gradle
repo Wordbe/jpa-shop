@@ -26,7 +26,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-devtools'
     implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.7.1'
 
-//    implementation 'com.h2database:h2:1.4.200'
+    implementation 'com.h2database:h2:1.4.200'
     implementation 'mysql:mysql-connector-java'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate5'
 

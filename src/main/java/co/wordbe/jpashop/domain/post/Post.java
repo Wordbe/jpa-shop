@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 public class Post {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String content;
@@ -26,12 +26,25 @@ public class Post {
         this.content = content;
     }
 
-    public void changeComment(Comment comment) {
+    public void addComment(Comment comment) {
         if (comment.getPost() != null) {
           comment.getPost().getComments().remove(comment);
         }
         comment.setPost(this);
         this.comments.add(comment);
+    }
+
+    public void updateComments(List<Comment> comments) {
+        if (this.comments != null) {
+            for (Comment beforeComment : this.comments) {
+                beforeComment.setPost(null);
+            }
+        }
+
+        this.comments = comments;
+        for (Comment comment : comments) {
+            comment.setPost(this);
+        }
     }
 }
 

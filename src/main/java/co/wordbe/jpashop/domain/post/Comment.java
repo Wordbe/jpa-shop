@@ -2,14 +2,16 @@ package co.wordbe.jpashop.domain.post;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
+@ToString(exclude = {"post"})
 @Entity
 public class Comment {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String content;
 
