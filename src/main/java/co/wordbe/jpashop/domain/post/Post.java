@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 public class Post {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String title;
     private String content;

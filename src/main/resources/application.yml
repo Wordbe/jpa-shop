@@ -7,7 +7,12 @@ spring:
     password:
     driver-class-name: org.h2.Driver
 
-#    url: jdbc:mysql://localhost:13306/mytest
+  hikari:
+    data-source-properties:
+      rewriteBatchedStatements: true
+
+
+  #    url: jdbc:mysql://localhost:13306/mytest
 #    username: wordbe
 #    password: 1234
 
@@ -19,6 +24,10 @@ spring:
       hibernate:
 #        show_sql: true
         format_sql: true
+        jdbc:
+          batch_size: 1000
+        order_inserts: true
+
 #    open-in-view: false
 
 #  h2:
