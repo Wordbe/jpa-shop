@@ -1,27 +1,19 @@
 # 스프링부트가 기본 제공
 spring:
   datasource:
-    url: jdbc:h2:mem:test
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
-
-    hikari:
-      data-source-properties:
-        rewriteBatchedStatements: true
-
+    url: jdbc:mysql://localhost:3306/mytest
+    username: root
+    password: root1357
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
-        show_sql: false
         format_sql: true
         jdbc:
           batch_size: 1000
         order_inserts: true
-
 
 logging:
   level:
@@ -29,3 +21,35 @@ logging:
       hibernate:
         SQL: debug
         type: trace # p6spy 로 대체
+
+## 스프링부트가 기본 제공
+#spring:
+#  datasource:
+#    url: jdbc:h2:mem:test
+#    username: sa
+#    password:
+#    driver-class-name: org.h2.Driver
+#
+#    hikari:
+#      data-source-properties:
+#        rewriteBatchedStatements: true
+#
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
+#    properties:
+#      hibernate:
+#        show_sql: false
+#        format_sql: true
+#        jdbc:
+#          batch_size: 1000
+#        order_inserts: true
+#
+#
+#logging:
+#  level:
+#    org:
+#      hibernate:
+#        SQL: debug
+#        type: trace # p6spy 로 대체

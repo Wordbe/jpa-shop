@@ -1,4 +1,4 @@
-package co.wordbe.jpashop.repository;
+package co.wordbe.jpashop.repository.badge;
 
 import co.wordbe.jpashop.domain.badge.Badge;
 import org.springframework.data.jpa.repository.JpaRepository;

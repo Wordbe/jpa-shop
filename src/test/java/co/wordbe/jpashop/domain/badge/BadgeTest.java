@@ -1,6 +1,6 @@
 package co.wordbe.jpashop.domain.badge;
 
-import co.wordbe.jpashop.repository.BadgeRepository;
+import co.wordbe.jpashop.repository.badge.BadgeRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
